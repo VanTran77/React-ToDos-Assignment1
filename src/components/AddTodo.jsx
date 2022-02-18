@@ -17,7 +17,13 @@ export default class AddTodo extends Component {
             // this is null / empty / undefine == false
             toast.error("Please input your task")
             return;
-        } else {
+        } else
+        if(!this.state.description){
+            // this is null / empty / undefine == false
+            toast.error("Please input your description")
+            return;
+        }
+        else {
             
             const todo = {
                 id: uuidv4(),
@@ -36,13 +42,13 @@ export default class AddTodo extends Component {
         <div>
             <label>Task</label>
             <br/>
-            <input type="text" name="task" value={this.state.task} 
+            <input type="text" name="task" value={this.state.task} required
                 onChange={this.handleOnChangeTask} placeholder="Please input task"
             />
             <p/>
             <label>Description</label>
             <br/>
-            <input type="text" name="description" value={this.state.description} 
+            <input type="text" name="description" value={this.state.description} required
                 onChange={this.handleOnChangeTask} placeholder="Please input description"
             />
             <p/>
